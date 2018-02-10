@@ -14,8 +14,7 @@ export class Loader {
     this.imageloader = new ImageLoader();
     this.videoloader = new VideoLoader();
 
-    // @ts-ignore
-    this.loaderPromise = Promise.all([
+    this.loaderPromise = () => Promise.all([
       this.audioloader.load(),
       this.imageloader.load(),
       this.videoloader.load(),
