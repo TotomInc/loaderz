@@ -1,4 +1,4 @@
-import { ILoaderPromise } from './model';
+import { ILoaderPromise } from '../models';
 
 export class VideoLoader {
   private videoPromise: (path: string) => Promise<ILoaderPromise>;

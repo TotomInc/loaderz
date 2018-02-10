@@ -1,4 +1,4 @@
-import { ILoaderPromise } from './model';
+import { ILoaderPromise } from '../models';
 
 export class ImageLoader {
   private imagePromise: (path: string) => Promise<ILoaderPromise>;

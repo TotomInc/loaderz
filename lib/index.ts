@@ -1,4 +1,3 @@
-export { AudioLoader } from './audio-loader';
-export { ImageLoader } from './image-loader';
-export { VideoLoader } from './video-loader';
-export { ILoaderPromise } from './model';
+export { AudioLoader, ImageLoader, VideoLoader } from './loaders';
+export { ILoaderPromise } from './models';
+export { Loader } from './loader';

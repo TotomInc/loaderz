@@ -1,4 +1,4 @@
-import { ILoaderPromise } from './model';
+import { ILoaderPromise } from '../models';
 
 export class AudioLoader {
   private audioPromise: (path: string) => Promise<ILoaderPromise>;
