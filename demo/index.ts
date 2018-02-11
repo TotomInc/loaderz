@@ -1,4 +1,4 @@
-import Loader = require('../dist');
+import { Loader } from '../lib';
 
 const Loaderz = new Loader();
 
