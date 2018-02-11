@@ -6,7 +6,7 @@
 
 Install using `yarn` or `npm`:
 
-- `yarn add loaderz --save`
+- `yarn add loaderz`
 - `npm install loaderz --save`
 
 ## Usage
