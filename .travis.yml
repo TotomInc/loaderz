@@ -1,0 +1,17 @@
+language: node_js
+
+node_js:
+- 8
+
+cache:
+  directories:
+  - node_modules
+sudo: false
+
+script:
+- yarn test
+
+notifications:
+  email:
+    on_success: never
+    on_failure: never
