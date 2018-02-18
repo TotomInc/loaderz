@@ -1,5 +1,7 @@
 # loaderz
 
+![Build status](https://travis-ci.org/TotomInc/loaderz.svg?branch=master) ![Version](https://img.shields.io/npm/v/loaderz.svg) ![License](https://img.shields.io/npm/l/loaderz.svg)
+
 > A very easy-to-use asset-loader using promises. Support images, audio and video.
 
 ## Installation
