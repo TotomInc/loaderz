@@ -11,8 +11,8 @@
   "scripts": {
     "build": "rm -rf dist && tsc -p tsconfig.json",
     "demo": "rm -rf demo/dist && parcel demo/index.html -p 8080 -d demo/dist",
-    "test": "ava",
-    "test:watch": "ava --watch"
+    "test": "yarn build && ava --verbose -s",
+    "test:watch": "yarn build && ava --verbose --watch -s"
   },
   "author": "Thomas Cazade @totominc <cazade.thomas@gmail.com>",
   "license": "MIT",
