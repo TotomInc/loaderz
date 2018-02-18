@@ -11,8 +11,8 @@
   "scripts": {
     "build": "rm -rf dist && tsc -p tsconfig.json",
     "demo": "rm -rf demo/dist && parcel demo/index.html -p 8080 -d demo/dist",
-    "test": "ava",
-    "test:watch": "ava --watch"
+    "test": "yarn build && ava --verbose -s",
+    "test:watch": "yarn build && ava --verbose --watch -s"
   },
   "author": "Thomas Cazade @totominc <cazade.thomas@gmail.com>",
   "license": "MIT",
@@ -21,8 +21,9 @@
   },
   "homepage": "https://github.com/TotomInc/loaderz#readme",
   "devDependencies": {
-    "ava": "^1.0.0-beta.1",
+    "ava": "^0.25.0",
     "browser-env": "^3.2.5",
+    "canvas-prebuilt": "^1.6.5-prerelease.1",
     "parcel-bundler": "^1.5.1",
     "typescript": "^2.7.1"
   },
