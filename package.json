@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/TotomInc/loaderz#readme",
   "devDependencies": {
-    "ava": "^1.0.0-beta.1",
+    "ava": "^0.25.0",
     "browser-env": "^3.2.5",
     "parcel-bundler": "^1.5.1",
     "typescript": "^2.7.1"
