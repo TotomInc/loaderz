@@ -1,6 +1,6 @@
 {
   "name": "loaderz",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A very easy-to-use asset-loader using promises. Support images, audio and video.",
   "main": "dist/index.js",
   "types": "dist/index.d.js",
@@ -10,7 +10,7 @@
   },
   "scripts": {
     "prepublishOnly": "yarn build",
-    "build": "rm -rf dist && tsc",
+    "build": "rm -rf dist && tsc -p ./tsconfig.json",
     "demo": "rm -rf demo/dist && parcel demo/index.html -p 8080 -d demo/dist",
     "demo:build": "rm -rf demo/dist && parcel build demo/index.html -d demo/dist --public-url ./",
     "test": "yarn build && ava --verbose -s",
