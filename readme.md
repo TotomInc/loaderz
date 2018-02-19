@@ -36,7 +36,8 @@ All the code is written in Typescript. Feel free to contribute by creating issue
 2. Install all dev-deps: `yarn install` or `npm install`
 3. Run the demo: `yarn demo` (`localhost:8080`)
 4. Edit some files. All differents loaders are in `lib/loaders`
-5. Commit and push your edits, then create a PR
+5. Run tests: `yarn test`
+6. Commit and push your edits, then create a PR
 
 ## License
 
