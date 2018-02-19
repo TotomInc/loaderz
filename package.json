@@ -9,11 +9,12 @@
     "url": "git+https://github.com/TotomInc/loaderz.git"
   },
   "scripts": {
-    "build": "rm -rf dist && tsc -p tsconfig.json",
+    "build": "rm -rf dist && tsc",
     "demo": "rm -rf demo/dist && parcel demo/index.html -p 8080 -d demo/dist",
     "demo:build": "rm -rf demo/dist && parcel build demo/index.html -d demo/dist --public-url ./",
     "test": "yarn build && ava --verbose -s",
-    "test:watch": "yarn build && ava --verbose --watch -s"
+    "test:watch": "yarn build && ava --verbose --watch -s",
+    "prepublish": "yarn build",
   },
   "author": "Thomas Cazade @totominc <cazade.thomas@gmail.com>",
   "license": "MIT",
@@ -25,7 +26,9 @@
     "ava": "^0.25.0",
     "browser-env": "^3.2.5",
     "canvas-prebuilt": "^1.6.5-prerelease.1",
-    "parcel-bundler": "^1.5.1",
+    "parcel-bundler": "^1.5.1"
+  },
+  "dependencies": {
     "typescript": "^2.7.2"
   },
   "ava": {
