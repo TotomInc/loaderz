@@ -14,7 +14,7 @@
     "demo:build": "rm -rf demo/dist && parcel build demo/index.html -d demo/dist --public-url ./",
     "test": "yarn build && ava --verbose -s",
     "test:watch": "yarn build && ava --verbose --watch -s",
-    "prepublish": "yarn build",
+    "prepublish": "yarn build"
   },
   "author": "Thomas Cazade @totominc <cazade.thomas@gmail.com>",
   "license": "MIT",
