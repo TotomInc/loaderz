@@ -11,6 +11,7 @@
   "scripts": {
     "build": "rm -rf dist && tsc -p tsconfig.json",
     "demo": "rm -rf demo/dist && parcel demo/index.html -p 8080 -d demo/dist",
+    "demo:build": "rm -rf demo/dist && parcel build demo/index.html -d demo/dist --public-url ./",
     "test": "yarn build && ava --verbose -s",
     "test:watch": "yarn build && ava --verbose --watch -s"
   },
