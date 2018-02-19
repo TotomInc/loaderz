@@ -1,16 +1,15 @@
 {
   "name": "loaderz",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A very easy-to-use asset-loader using promises. Support images, audio and video.",
-  "main": "dist/index.js",
-  "types": "dist/index.d.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TotomInc/loaderz.git"
   },
   "scripts": {
-    "prepublishOnly": "yarn build",
-    "build": "rm -rf dist && tsc -p ./tsconfig.json",
+    "build": "rm -rf dist && tsc",
     "demo": "rm -rf demo/dist && parcel demo/index.html -p 8080 -d demo/dist",
     "demo:build": "rm -rf demo/dist && parcel build demo/index.html -d demo/dist --public-url ./",
     "test": "yarn build && ava --verbose -s",
@@ -26,9 +25,7 @@
     "ava": "^0.25.0",
     "browser-env": "^3.2.5",
     "canvas-prebuilt": "^1.6.5-prerelease.1",
-    "parcel-bundler": "^1.5.1"
-  },
-  "dependencies": {
+    "parcel-bundler": "^1.5.1",
     "typescript": "^2.7.2"
   },
   "files": [
