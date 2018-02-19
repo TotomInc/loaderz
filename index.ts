@@ -1,3 +1,1 @@
-import { Loader } from './lib';
-
-export = Loader;
+export { Loader } from './lib';
