@@ -1,6 +1,6 @@
 {
   "name": "loaderz",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A very easy-to-use asset-loader using promises. Support images, audio and video.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.js",
@@ -20,6 +20,16 @@
   "bugs": {
     "url": "https://github.com/TotomInc/loaderz/issues"
   },
+  "keywords": [
+    "es6",
+    "promise",
+    "typescript",
+    "management",
+    "data",
+    "load",
+    "assets",
+    "game"
+  ],
   "homepage": "https://github.com/TotomInc/loaderz#readme",
   "devDependencies": {
     "ava": "^0.25.0",
