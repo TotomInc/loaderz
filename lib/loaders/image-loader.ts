@@ -1,27 +1,28 @@
-import { ILoaderPromise } from '../models';
+import { Promise } from 'bluebird';
+
+import { LoadingData } from '../models';
 
 export class ImageLoader {
-  private imagePromise: (path: string) => Promise<ILoaderPromise>;
-  private loaderPromise: (paths: string[]) => Promise<ILoaderPromise[]>;
-
   private urls: string[] = [];
+  private promise: (url: string) => PromiseLike<LoadingData>;
 
   constructor() {
-    this.imagePromise = (path) => new Promise((resolve) => {
-      const image: HTMLImageElement = new Image();
-      image.onload = () => resolve({ path, status: 'OK' });
-      image.onerror = () => resolve({ path, status: 'ERR' });
-      image.src = path;
+    /* Initialize the single-promise function used for each image */
+    this.promise = (url) => new Promise((resolve, reject) => {
+      const image = new Image();
+      image.onload = () => resolve({ loaded: true, url });
+      image.onerror = () => resolve({ loaded: false, url });
+      image.src = url;
     });
-
-    this.loaderPromise = (paths) => Promise.all(paths.map(this.imagePromise));
   }
 
   public queue(url: string): void {
     this.urls.push(url);
   }
 
-  public load(): Promise<ILoaderPromise[]> {
-    return this.loaderPromise(this.urls);
+  public start(): PromiseLike<LoadingData[]> {
+    const promises = this.urls.map((url) => this.promise(url));
+
+    return Promise.all(promises);
   }
 }
