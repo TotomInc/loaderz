@@ -16,8 +16,8 @@ export class ImageLoader {
     });
   }
 
-  public queue(url: string): void {
-    this.urls.push(url);
+  public queue(urls: string[]): void {
+    urls.forEach((url) => this.urls.push(url));
   }
 
   public start(): PromiseLike<LoadingData[]> {
