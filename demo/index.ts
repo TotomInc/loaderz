@@ -1,18 +1,13 @@
-import { Loader } from '../lib';
+import { Loader } from '../dist';
 
-const Loaderz = new Loader();
+const cats = [
+  'http://www.catbreedslist.com/cat-wallpapers/American-Shorthair-kitten-look-towel-900x506.jpg',
+  'http://www.catbreedslist.com/cat-wallpapers/Siamese-kitten-cute-lie-paws-900x506.jpg',
+  'http://www.catbreedslist.com/cat-wallpapers/Maine-Coon-kitten-sitting-look-900x506.jpg',
+];
 
-Loaderz.queue('audio', 'http://sampleswap.org/mp3/artist/32777/m4rt3z_m4rt3z---Tribal-Fusion-160.mp3');
-Loaderz.queue('audio', 'http://sampleswap.org/mp3/artist/18256/Indidjinous_Under-the-Radar--160.mp3');
-
-Loaderz.queue('image', 'https://picsum.photos/1600/1600');
-Loaderz.queue('image', 'https://picsum.photos/2400/2400');
-Loaderz.queue('image', 'https://picsum.photos/3200/3200');
-
-Loaderz.queue('video', 'http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_30mb.mp4');
-Loaderz.queue('video', 'http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_5mb.mp4');
-
-Loaderz.load().then((res) => console.log('All assets loaded:', res));
-
-// @ts-ignore
-window.Loaderz = Loaderz;
+const loader = new Loader();
+loader.queue('image', cats);
+loader.start().then(() => {
+  console.log('All urls have been loaded, do whatever you want here');
+});
