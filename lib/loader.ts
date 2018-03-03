@@ -19,13 +19,15 @@ export class Loader {
     }
   }
 
-  public start(): PromiseLike<void> {
+  public start(): PromiseLike<LoadingData[]> {
     return this.imageloader.start().then((res) => {
       const imagesNotLoaded = res.filter((status) => !status.loaded);
 
       if (imagesNotLoaded.length > 0) {
         console.warn('🚨 [loaderz] some image(s) have failed to load:', imagesNotLoaded);
       }
+
+      return res;
     });
   }
 }

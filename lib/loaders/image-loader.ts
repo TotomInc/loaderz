@@ -10,8 +10,8 @@ export class ImageLoader {
     /* Initialize the single-promise function used for each image */
     this.promise = (url) => new Promise((resolve, reject) => {
       const image = new Image();
-      image.onload = () => resolve({ loaded: true, url });
-      image.onerror = () => resolve({ loaded: false, url });
+      image.onload = () => resolve({ loaded: true, url, type: 'image' });
+      image.onerror = () => resolve({ loaded: false, url, type: 'image' });
       image.src = url;
     });
   }
