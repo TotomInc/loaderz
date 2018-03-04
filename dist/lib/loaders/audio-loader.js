@@ -1,15 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const bluebird_1 = require("bluebird");
-class ImageLoader {
+class AudioLoader {
     constructor() {
         this.urls = [];
-        /* Initialize the single-promise function used for each image */
+        /* Initialize the single-promise function used for each audio */
         this.promise = (url) => new bluebird_1.Promise((resolve, reject) => {
-            const image = new Image();
-            image.onload = () => resolve({ loaded: true, url, type: 'image' });
-            image.onerror = () => resolve({ loaded: false, url, type: 'image' });
-            image.src = url;
+            const audio = new Audio();
+            audio.oncanplaythrough = () => resolve({ loaded: true, url, type: 'audio' });
+            audio.onerror = () => resolve({ loaded: false, url, type: 'audio' });
+            audio.src = url;
         });
     }
     queue(urls) {
@@ -20,4 +20,4 @@ class ImageLoader {
         return bluebird_1.Promise.all(promises);
     }
 }
-exports.ImageLoader = ImageLoader;
+exports.AudioLoader = AudioLoader;
