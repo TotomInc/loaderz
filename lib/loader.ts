@@ -1,21 +1,23 @@
-import { AudioLoader, ImageLoader } from './loaders';
+import { ImageLoader, MediaLoader } from './loaders';
 
-import { LoadingData } from './models';
+import { LoadingData, MediaData } from './models';
 
 export class Loader {
-  private audioloader: AudioLoader;
+  private medialoder: MediaLoader;
   private imageloader: ImageLoader;
 
   constructor() {
-    this.audioloader = new AudioLoader();
+    this.medialoder = new MediaLoader();
     this.imageloader = new ImageLoader();
   }
 
-  public queue(type: 'image' | 'audio', src: string | string[]): void {
+  public queue(type: 'image' | 'audio' | 'video', src: string | string[]): void {
     let urls: string[] = (!Array.isArray(src)) ? [src] : src;
 
-    if (type === 'audio') {
-      this.audioloader.queue(urls);
+    if (type === 'audio' || type === 'video') {
+      const medias: MediaData[] = [];
+      urls.map((url) => medias.push({ type, url }));
+      this.medialoder.queue(medias);
     } else if (type === 'image') {
       this.imageloader.queue(urls);
     }
@@ -33,13 +35,13 @@ export class Loader {
         console.warn('🚨 [loaderz] some image(s) have failed to load:', imagesNotLoaded);
       }
 
-      return this.audioloader.start();
+      return this.medialoder.start();
     }).then((res) => {
-      const audiosNotLoaded = res.filter((status) => !status.loaded);
+      const mediasNotLoaded = res.filter((status) => !status.loaded);
       res.forEach((element) => allResources.push(element));
 
-      if (audiosNotLoaded.length > 0) {
-        console.warn('🚨 [loaderz] some audio(s) have failed to load:', audiosNotLoaded);
+      if (mediasNotLoaded.length > 0) {
+        console.warn('🚨 [loaderz] some media(s) have failed to load, maybe because your browser doesn\'t support this media type:', mediasNotLoaded);
       }
 
       return allResources;
