@@ -21,14 +21,13 @@
     "url": "https://github.com/TotomInc/loaderz/issues"
   },
   "keywords": [
-    "es6",
-    "promise",
     "typescript",
-    "management",
-    "data",
-    "load",
-    "assets",
-    "game"
+    "bluebird",
+    "promise",
+    "es6",
+    "asset-loader",
+    "preloader",
+    "game-utility"
   ],
   "homepage": "https://github.com/TotomInc/loaderz#readme",
   "devDependencies": {
