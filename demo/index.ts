@@ -1,18 +1,38 @@
-import { Loader } from '../lib';
+// Consuming the module in your project would look like:
+// import { Loader } from 'loaderz';
+import { Loader } from '../dist';
 
-const Loaderz = new Loader();
+// A list of heavy images to load, it could be art-assets for your HTML5 game
+const images = [
+  'http://www.sample-videos.com/img/Sample-jpg-image-500kb.jpg',
+  'http://www.sample-videos.com/img/Sample-jpg-image-1mb.jpg',
+  'http://www.sample-videos.com/img/Sample-png-image-500kb.png',
+  'http://www.sample-videos.com/img/Sample-png-image-1mb.png',
+];
 
-Loaderz.queue('audio', 'http://sampleswap.org/mp3/artist/32777/m4rt3z_m4rt3z---Tribal-Fusion-160.mp3');
-Loaderz.queue('audio', 'http://sampleswap.org/mp3/artist/18256/Indidjinous_Under-the-Radar--160.mp3');
+// Some audio elements to spice-up your HTML5 game
+const audios = [
+  'http://www.sample-videos.com/audio/mp3/crowd-cheering.mp3',
+  'http://www.sample-videos.com/audio/mp3/wave.mp3',
+];
 
-Loaderz.queue('image', 'https://picsum.photos/1600/1600');
-Loaderz.queue('image', 'https://picsum.photos/2400/2400');
-Loaderz.queue('image', 'https://picsum.photos/3200/3200');
+// Same for videos if you need to preload before playing
+const videos = [
+  'http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_1mb.mp4',
+  'http://www.sample-videos.com/video/flv/720/big_buck_bunny_720p_1mb.flv',
+  'http://www.sample-videos.com/video/mkv/720/big_buck_bunny_720p_1mb.mkv',
+];
 
-Loaderz.queue('video', 'http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_30mb.mp4');
-Loaderz.queue('video', 'http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_5mb.mp4');
+// Instance the loader, you can easily implement it anywhere in your project
+const loader = new Loader();
 
-Loaderz.load().then((res) => console.log('All assets loaded:', res));
+// Queue all our different resources
+loader.queue('image', images);
+loader.queue('audio', audios);
+loader.queue('video', videos);
 
-// @ts-ignore
-window.Loaderz = Loaderz;
+// Start loading the resources and have a full control of the load
+// state using promise. Return a response with all elements loaded
+loader.start().then((response) => {
+  console.log('All urls have been loaded, do whatever you want here:', response);
+});

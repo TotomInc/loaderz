@@ -1,6 +1,6 @@
 {
   "name": "loaderz",
-  "version": "1.0.8",
+  "version": "1.1.0-n",
   "description": "A very easy-to-use asset-loader using promises. Support images, audio and video.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.js",
@@ -32,6 +32,7 @@
   ],
   "homepage": "https://github.com/TotomInc/loaderz#readme",
   "devDependencies": {
+    "@types/bluebird": "^3.5.20",
     "ava": "^0.25.0",
     "browser-env": "^3.2.5",
     "canvas-prebuilt": "^1.6.5-prerelease.1",
@@ -47,5 +48,8 @@
     "require": [
       "./test/helpers/setup-browser-env.js"
     ]
+  },
+  "dependencies": {
+    "bluebird": "^3.5.1"
   }
 }

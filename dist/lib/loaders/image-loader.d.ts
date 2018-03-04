@@ -1,9 +1,8 @@
-import { ILoaderPromise } from '../models';
+import { LoadingData } from '../models';
 export declare class ImageLoader {
-    private imagePromise;
-    private loaderPromise;
     private urls;
+    private promise;
     constructor();
-    queue(url: string): void;
-    load(): Promise<ILoaderPromise[]>;
+    queue(urls: string[]): void;
+    start(): PromiseLike<LoadingData[]>;
 }

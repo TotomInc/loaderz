@@ -1,21 +1,23 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const bluebird_1 = require("bluebird");
 class ImageLoader {
     constructor() {
         this.urls = [];
-        this.imagePromise = (path) => new Promise((resolve) => {
+        /* Initialize the single-promise function used for each image */
+        this.promise = (url) => new bluebird_1.Promise((resolve, reject) => {
             const image = new Image();
-            image.onload = () => resolve({ path, status: 'OK' });
-            image.onerror = () => resolve({ path, status: 'ERR' });
-            image.src = path;
+            image.onload = () => resolve({ loaded: true, url, type: 'image' });
+            image.onerror = () => resolve({ loaded: false, url, type: 'image' });
+            image.src = url;
         });
-        this.loaderPromise = (paths) => Promise.all(paths.map(this.imagePromise));
     }
-    queue(url) {
-        this.urls.push(url);
+    queue(urls) {
+        urls.forEach((url) => this.urls.push(url));
     }
-    load() {
-        return this.loaderPromise(this.urls);
+    start() {
+        const promises = this.urls.map((url) => this.promise(url));
+        return bluebird_1.Promise.all(promises);
     }
 }
 exports.ImageLoader = ImageLoader;

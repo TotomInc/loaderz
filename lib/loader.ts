@@ -1,46 +1,50 @@
-import { AudioLoader, ImageLoader, VideoLoader } from './index';
-import { ILoaderPromise } from './index';
+import { ImageLoader, MediaLoader } from './loaders';
 
-/** Handle all ressources loaders and interact with them. */
+import { LoadingData, MediaData } from './models';
+
 export class Loader {
-  private audioloader: AudioLoader;
+  private medialoder: MediaLoader;
   private imageloader: ImageLoader;
-  private videoloader: VideoLoader;
-
-  private loaderPromise: () => Promise<any[]>;
 
   constructor() {
-    this.audioloader = new AudioLoader();
+    this.medialoder = new MediaLoader();
     this.imageloader = new ImageLoader();
-    this.videoloader = new VideoLoader();
-
-    this.loaderPromise = () => Promise.all([
-      this.audioloader.load(),
-      this.imageloader.load(),
-      this.videoloader.load(),
-    ]);
   }
 
-  /**
-   * Queue a ressource for future loading.
-   * @param type - can be 'audio', 'image' or 'video', specify the type of the ressource to load
-   * @param src - url/src of the ressource to load
-   */
-  public queue(type: 'audio' | 'image' | 'video', src: string): void {
-    if (type === 'audio') {
-      this.audioloader.queue(src);
+  public queue(type: 'image' | 'audio' | 'video', src: string | string[]): void {
+    let urls: string[] = (!Array.isArray(src)) ? [src] : src;
+
+    if (type === 'audio' || type === 'video') {
+      const medias: MediaData[] = [];
+      urls.map((url) => medias.push({ type, url }));
+      this.medialoder.queue(medias);
     } else if (type === 'image') {
-      this.imageloader.queue(src);
-    } else if (type === 'video') {
-      this.videoloader.queue(src);
+      this.imageloader.queue(urls);
     }
   }
 
-  /**
-   * Load all queued ressources.
-   * @return - return an array of loaded resources: [audios, images, videos].
-   */
-  public load(): Promise<ILoaderPromise[]> {
-    return this.loaderPromise();
+  public start(): PromiseLike<LoadingData[]> {
+    const allResources: LoadingData[] = [];
+
+    /** Load each elements from each loader one-by-one */
+    return this.imageloader.start().then((res) => {
+      const imagesNotLoaded = res.filter((status) => !status.loaded);
+      res.forEach((element) => allResources.push(element));
+
+      if (imagesNotLoaded.length > 0) {
+        console.warn('🚨 [loaderz] some image(s) have failed to load:', imagesNotLoaded);
+      }
+
+      return this.medialoder.start();
+    }).then((res) => {
+      const mediasNotLoaded = res.filter((status) => !status.loaded);
+      res.forEach((element) => allResources.push(element));
+
+      if (mediasNotLoaded.length > 0) {
+        console.warn('🚨 [loaderz] some media(s) have failed to load, maybe because your browser doesn\'t support this media type:', mediasNotLoaded);
+      }
+
+      return allResources;
+    });
   }
 }
