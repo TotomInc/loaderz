@@ -6,8 +6,16 @@ const cats = [
   'http://www.catbreedslist.com/cat-wallpapers/Maine-Coon-kitten-sitting-look-900x506.jpg',
 ];
 
+const audios = [
+  'http://www.sample-videos.com/audio/mp3/crowd-cheering.mp3',
+  'http://www.sample-videos.com/audio/mp3/wave.mp3',
+];
+
 const loader = new Loader();
+
 loader.queue('image', cats);
-loader.start().then(() => {
-  console.log('All urls have been loaded, do whatever you want here');
+loader.queue('audio', audios);
+
+loader.start().then((response) => {
+  console.log('All urls have been loaded, do whatever you want here:', response);
 });
