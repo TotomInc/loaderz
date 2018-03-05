@@ -35,7 +35,9 @@
     "ava": "^0.25.0",
     "browser-env": "^3.2.5",
     "canvas-prebuilt": "^1.6.5-prerelease.1",
+    "husky": "^0.14.3",
     "parcel-bundler": "^1.5.1",
+    "prettier": "^1.11.1",
     "typescript": "^2.7.2"
   },
   "files": [
