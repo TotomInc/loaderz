@@ -1,7 +1,8 @@
 {
   "name": "loaderz",
   "version": "1.1.0",
-  "description": "A very easy-to-use asset-loader using promises. Support images, audio and video.",
+  "description":
+    "A very easy-to-use asset-loader using promises. Support images, audio and video.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.js",
   "repository": {
@@ -11,9 +12,12 @@
   "scripts": {
     "build": "rm -rf dist && tsc",
     "demo": "rm -rf demo/dist && parcel demo/index.html -p 8080 -d demo/dist",
-    "demo:build": "rm -rf demo/dist && parcel build demo/index.html -d demo/dist --public-url ./",
+    "demo:build":
+      "rm -rf demo/dist && parcel build demo/index.html -d demo/dist --public-url ./",
     "test": "yarn build && ava --verbose -s",
-    "test:watch": "yarn build && ava --verbose --watch -s"
+    "test:watch": "yarn build && ava --verbose --watch -s",
+    "precommit": "pretty-quick --staged && npm test",
+    "pretty": "pretty-quick"
   },
   "author": "Thomas Cazade @totominc <cazade.thomas@gmail.com>",
   "license": "MIT",
@@ -35,18 +39,15 @@
     "ava": "^0.25.0",
     "browser-env": "^3.2.5",
     "canvas-prebuilt": "^1.6.5-prerelease.1",
+    "husky": "^0.14.3",
     "parcel-bundler": "^1.5.1",
+    "prettier": "^1.11.1",
+    "pretty-quick": "^1.4.1",
     "typescript": "^2.7.2"
   },
-  "files": [
-    "dist/index.js",
-    "dist/index.d.ts",
-    "dist/lib"
-  ],
+  "files": ["dist/index.js", "dist/index.d.ts", "dist/lib"],
   "ava": {
-    "require": [
-      "./test/helpers/setup-browser-env.js"
-    ]
+    "require": ["./test/helpers/setup-browser-env.js"]
   },
   "dependencies": {
     "bluebird": "^3.5.1"
