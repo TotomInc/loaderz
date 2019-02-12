@@ -7,7 +7,7 @@
   "typings": "dist/types/loaderz.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TotomInc/loaderz.git"
+    "url": "https://github.com/TotomInc/loaderz.git"
   },
   "scripts": {
     "prebuild": "rimraf dist",
