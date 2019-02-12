@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.25",
+    "@types/node": "^11.9.0",
     "ava": "^1.2.1",
     "lodash.camelcase": "^4.3.0",
     "parcel-bundler": "^1.11.0",
