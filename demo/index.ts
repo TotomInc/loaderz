@@ -1,10 +1,6 @@
 // Consuming the module in your project would look like:
 // import { Loader } from 'loaderz';
-import { Loader } from '../src/loaderz';
-
-// Additionnally, we can import the Logger from which is used internally by
-// Loaderz (for demonstration purposes)
-import { Logger } from '../src/logger';
+import { Loader, Logger } from '../dist/loaderz.es5';
 
 // A list of heavy images to load, it could be art-assets for your HTML5 game
 const images = [
