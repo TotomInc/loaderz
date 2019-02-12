@@ -1,7 +1,7 @@
 {
   "name": "loaderz",
   "version": "1.1.0",
-  "description": "A very easy-to-use asset-loader using promises. Support images, audio and video.",
+  "description": "A very easy-to-use asset-loader using promises. Support images, audios and videos.",
   "main": "dist/loaderz.umd.js",
   "module": "dist/loaderz.es5.js",
   "typings": "dist/types/loaderz.d.ts",
@@ -14,11 +14,11 @@
     "build": "tsc --module commonjs && rollup -c rollup.config.ts",
     "demo": "rm -rf demo/dist && parcel demo/index.html -p 8080 -d demo/dist",
     "demo:build": "rm -rf demo/dist && parcel build demo/index.html -d demo/dist --public-url ./",
-    "lint": "tslint --project tsconfig.json -t codeFrame 'lib/**/*.ts'",
+    "lint": "tslint --project tsconfig.json -t codeFrame 'src/**/*.ts'",
     "test": "yarn build && ava --verbose -s",
     "test:watch": "yarn build && ava --verbose --watch -s"
   },
-  "author": "Thomas Cazade @totominc <cazade.thomas@gmail.com>",
+  "author": "TotomInc <cazade.thomas@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/TotomInc/loaderz/issues"
@@ -26,7 +26,6 @@
   "keywords": [
     "typescript",
     "promise",
-    "es6",
     "asset-loader",
     "preloader",
     "game-utility"
