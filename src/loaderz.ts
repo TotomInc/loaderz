@@ -5,7 +5,7 @@ import { ImageLoader } from './loaders/image-loader';
 import { MediaLoader } from './loaders/media-loader';
 import { Logger } from './logger';
 
-export class Loader {
+class Loader {
   private logger: Logger;
   private imageLoader: ImageLoader;
   private mediaLoader: MediaLoader;
@@ -73,3 +73,5 @@ export class Loader {
       });
   }
 }
+
+export { Loader, Logger };
