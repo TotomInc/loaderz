@@ -9,6 +9,7 @@
     "url": "git+https://github.com/TotomInc/loaderz.git"
   },
   "scripts": {
+    "prebuild": "rimraf dist",
     "build": "rm -rf dist && tsc",
     "demo": "rm -rf demo/dist && parcel demo/index.html -p 8080 -d demo/dist",
     "demo:build": "rm -rf demo/dist && parcel build demo/index.html -d demo/dist --public-url ./",
@@ -39,6 +40,7 @@
     "@types/bluebird": "^3.5.25",
     "ava": "^1.2.1",
     "parcel-bundler": "^1.11.0",
+    "rimraf": "^2.6.3",
     "tslint": "^5.12.1",
     "tslint-config-airbnb": "^5.11.1"
   },
