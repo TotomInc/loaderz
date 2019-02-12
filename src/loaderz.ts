@@ -1,5 +1,3 @@
-import * as Bluebird from 'bluebird';
-
 import { LoadingData } from './models/loading-data';
 import { ResourceType } from './models/resource-type';
 import { MediaData } from './models/media-data';
@@ -47,7 +45,7 @@ export class Loader {
    * Start the loading sequence. Return an array of `LoadingData` to check the
    * status of loaded resources.
    */
-  public start(): Bluebird<LoadingData[]> {
+  public start(): PromiseLike<LoadingData[]> {
     const allResources: LoadingData[] = [];
 
     return this.imageLoader.start()

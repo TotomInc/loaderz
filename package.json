@@ -2,15 +2,16 @@
   "name": "loaderz",
   "version": "1.1.0",
   "description": "A very easy-to-use asset-loader using promises. Support images, audio and video.",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.js",
+  "main": "dist/loaderz.umd.js",
+  "module": "dist/loaderz.es5.js",
+  "typings": "dist/types/loaderz.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TotomInc/loaderz.git"
   },
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "rm -rf dist && tsc",
+    "build": "tsc --module commonjs && rollup -c rollup.config.ts",
     "demo": "rm -rf demo/dist && parcel demo/index.html -p 8080 -d demo/dist",
     "demo:build": "rm -rf demo/dist && parcel build demo/index.html -d demo/dist --public-url ./",
     "lint": "tslint --project tsconfig.json -t codeFrame 'lib/**/*.ts'",
@@ -24,7 +25,6 @@
   },
   "keywords": [
     "typescript",
-    "bluebird",
     "promise",
     "es6",
     "asset-loader",
@@ -33,11 +33,9 @@
   ],
   "homepage": "https://github.com/TotomInc/loaderz#readme",
   "dependencies": {
-    "bluebird": "^3.5.3",
     "typescript": "^3.3.3"
   },
   "devDependencies": {
-    "@types/bluebird": "^3.5.25",
     "@types/node": "^11.9.0",
     "ava": "^1.2.1",
     "lodash.camelcase": "^4.3.0",

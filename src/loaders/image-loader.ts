@@ -1,5 +1,3 @@
-import * as Bluebird from 'bluebird';
-
 import { LoadingData } from '../models/loading-data';
 
 /**
@@ -36,7 +34,7 @@ export class ImageLoader {
   public start() {
     const promises = this.urls.map(url => this.promise(url));
 
-    return Bluebird.Promise.all(promises);
+    return Promise.all(promises);
   }
 
   /**
@@ -48,7 +46,7 @@ export class ImageLoader {
    * @returns the image-promise generated
    */
   private promise(url: string) {
-    return new Bluebird.Promise<LoadingData>((resolve, reject) => {
+    return new Promise<LoadingData>((resolve, reject) => {
       const image = new Image();
 
       image.onload = () => resolve({ url, loaded: true, type: 'image' });

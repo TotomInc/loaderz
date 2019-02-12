@@ -1,5 +1,3 @@
-import * as Bluebird from 'bluebird';
-
 import { LoadingData } from '../models/loading-data';
 import { MediaData } from '../models/media-data';
 
@@ -49,7 +47,7 @@ export class MediaLoader {
    * @returns the media-promise generated
    */
   private promise(media: MediaData) {
-    return new Bluebird.Promise<LoadingData>((resolve, reject) => {
+    return new Promise<LoadingData>((resolve, reject) => {
       const element = document.createElement(media.type);
 
       element.oncanplaythrough = () => resolve({ loaded: true, url: media.url, type: media.type });
