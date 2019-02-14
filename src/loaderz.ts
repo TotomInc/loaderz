@@ -59,7 +59,7 @@ class Loader {
    * Start the loading sequence. Return an array of `LoadingData` to check the
    * status of loaded resources.
    */
-  public start(): PromiseLike<LoadingData[]> {
+  public start() {
     const allResources: LoadingData[] = [];
 
     return this.imageLoader.start()
