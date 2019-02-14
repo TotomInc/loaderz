@@ -25,7 +25,16 @@ export default {
     rollupPluginJson(),
 
     // Compile TypeScript files
-    rollupPluginTypescript2({ useTsconfigDeclarationDir: true }),
+    rollupPluginTypescript2({
+      useTsconfigDeclarationDir: true,
+      // By default we use `commonjs` in the `tsconfig`, we must use `es2015`
+      // or `esnext` when bundling the module
+      tsconfigOverride: {
+        compilerOptions: {
+          module: 'es2015',
+        },
+      },
+    }),
 
     // Allow bundling cjs modules (unlike webpack, rollup doesn't understand cjs)
     rollupPluginCommonjs(),
