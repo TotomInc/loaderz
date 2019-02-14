@@ -15,8 +15,8 @@
     "demo": "rm -rf demo/dist && parcel demo/index.html -p 8080 -d demo/dist",
     "demo:build": "rm -rf demo/dist && parcel build demo/index.html -d demo/dist --public-url ./",
     "lint": "tslint --project tsconfig.json -t codeFrame 'src/**/*.ts'",
-    "test": "yarn build && ava --verbose -s",
-    "test:watch": "yarn build && ava --verbose --watch -s",
+    "test": "NODE_ENV=test ava --verbose -s",
+    "test:watch": "NODE_ENV=test ava --verbose --watch -s",
     "semantic-release": "semantic-release",
     "semantic-release-prepare": "ts-node tools/semantic-release-prepare"
   },
@@ -33,12 +33,10 @@
     "game-utility"
   ],
   "homepage": "https://github.com/TotomInc/loaderz#readme",
-  "dependencies": {
-    "typescript": "^3.3.3"
-  },
   "devDependencies": {
     "@types/node": "^11.9.0",
     "ava": "^1.2.1",
+    "browser-env": "^3.2.5",
     "colors": "^1.3.3",
     "husky": "^1.3.1",
     "lodash.camelcase": "^4.3.0",
@@ -53,7 +51,8 @@
     "semantic-release": "^15.13.3",
     "ts-node": "^8.0.2",
     "tslint": "^5.12.1",
-    "tslint-config-airbnb": "^5.11.1"
+    "tslint-config-airbnb": "^5.11.1",
+    "typescript": "^3.3.3"
   },
   "files": [
     "dist/index.js",
@@ -61,8 +60,13 @@
     "dist/lib"
   ],
   "ava": {
+    "compileEnhancements": false,
     "require": [
+      "ts-node/register",
       "./test/helpers/setup-browser-env.js"
+    ],
+    "extensions": [
+      "ts"
     ]
   }
 }
