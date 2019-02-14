@@ -1,55 +1,70 @@
 {
   "name": "loaderz",
-  "version": "1.1.0",
-  "description":
-    "A very easy-to-use asset-loader using promises. Support images, audio and video.",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.js",
+  "version": "1.2.0",
+  "description": "A very easy-to-use asset-loader using promises. Support images, audios and videos.",
+  "main": "dist/loaderz.umd.js",
+  "module": "dist/loaderz.es5.js",
+  "typings": "dist/types/loaderz.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TotomInc/loaderz.git"
+    "url": "https://github.com/TotomInc/loaderz.git"
   },
   "scripts": {
-    "build": "rm -rf dist && tsc",
+    "prebuild": "rimraf dist",
+    "build": "tsc --module commonjs && rollup -c rollup.config.ts",
     "demo": "rm -rf demo/dist && parcel demo/index.html -p 8080 -d demo/dist",
-    "demo:build":
-      "rm -rf demo/dist && parcel build demo/index.html -d demo/dist --public-url ./",
-    "test": "yarn build && ava --verbose -s",
-    "test:watch": "yarn build && ava --verbose --watch -s",
-    "precommit": "pretty-quick --staged && npm test",
-    "pretty": "pretty-quick"
+    "demo:build": "rm -rf demo/dist && parcel build demo/index.html -d demo/dist --public-url ./",
+    "lint": "tslint --project tsconfig.json -t codeFrame 'src/**/*.ts'",
+    "test": "NODE_ENV=test ava --verbose -s",
+    "test:watch": "NODE_ENV=test ava --verbose --watch -s",
+    "semantic-release": "semantic-release",
+    "semantic-release-prepare": "ts-node tools/semantic-release-prepare"
   },
-  "author": "Thomas Cazade @totominc <cazade.thomas@gmail.com>",
+  "author": "TotomInc <cazade.thomas@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/TotomInc/loaderz/issues"
   },
   "keywords": [
     "typescript",
-    "bluebird",
     "promise",
-    "es6",
     "asset-loader",
     "preloader",
     "game-utility"
   ],
   "homepage": "https://github.com/TotomInc/loaderz#readme",
   "devDependencies": {
-    "@types/bluebird": "^3.5.20",
-    "ava": "^0.25.0",
+    "@types/node": "^11.9.0",
+    "ava": "^1.2.1",
     "browser-env": "^3.2.5",
-    "canvas-prebuilt": "^1.6.5-prerelease.1",
-    "husky": "^0.14.3",
-    "parcel-bundler": "^1.5.1",
-    "prettier": "^1.11.1",
-    "pretty-quick": "^1.4.1",
-    "typescript": "^2.7.2"
+    "colors": "^1.3.3",
+    "husky": "^1.3.1",
+    "lodash.camelcase": "^4.3.0",
+    "parcel-bundler": "^1.11.0",
+    "rimraf": "^2.6.3",
+    "rollup": "^1.1.2",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-json": "^3.1.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-sourcemaps": "^0.4.2",
+    "rollup-plugin-typescript2": "^0.19.2",
+    "semantic-release": "^15.13.3",
+    "ts-node": "^8.0.2",
+    "tslint": "^5.12.1",
+    "tslint-config-airbnb": "^5.11.1",
+    "typescript": "^3.3.3"
   },
-  "files": ["dist/index.js", "dist/index.d.ts", "dist/lib"],
+  "files": [
+    "dist"
+  ],
   "ava": {
-    "require": ["./test/helpers/setup-browser-env.js"]
-  },
-  "dependencies": {
-    "bluebird": "^3.5.1"
+    "compileEnhancements": false,
+    "require": [
+      "ts-node/register",
+      "./test/helpers/setup-browser-env.js"
+    ],
+    "extensions": [
+      "ts"
+    ]
   }
 }

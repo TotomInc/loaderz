@@ -3,8 +3,3 @@ export interface LoadingData {
   url: string;
   type: 'audio' | 'image' | 'video';
 }
-
-export interface MediaData {
-  url: string;
-  type: 'audio' | 'video';
-}

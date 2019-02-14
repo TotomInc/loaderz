@@ -1,9 +1,11 @@
-.cache/
-node_modules/
+node_modules
+dist
 
-demo/dist/
+demo/dist
 
 yarn-error.log
 package-lock.json
 
+.cache
 .DS_Store
+.rpt2_cache
