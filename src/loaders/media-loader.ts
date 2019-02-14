@@ -48,10 +48,12 @@ export class MediaLoader {
    */
   private promise(media: MediaData) {
     return new Promise<LoadingData>((resolve, reject) => {
-      const element = document.createElement(media.type);
+      const element = (media.type === 'audio')
+        ? new Audio()
+        : document.createElement('video');
 
       element.oncanplaythrough = () => resolve({ loaded: true, url: media.url, type: media.type });
-      element.onerror = () => resolve({ loaded: false, url: media.url, type: media.type });
+      element.onerror = () => reject({ loaded: false, url: media.url, type: media.type });
       element.src = media.url;
     });
   }
