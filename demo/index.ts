@@ -1,6 +1,7 @@
 // Consuming the module in your project would look like:
 // import { Loader } from 'loaderz';
-import { Loader, Logger } from '../dist/loaderz.es5';
+// tslint:disable:import-name
+import Loader, { Logger } from '../src/loaderz';
 
 // A list of heavy images to load, it could be art-assets for your HTML5 game
 const images = [
