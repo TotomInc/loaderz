@@ -1,6 +1,6 @@
 {
   "name": "loaderz",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A very easy-to-use asset-loader using promises. Support images, audios and videos.",
   "main": "dist/loaderz.umd.js",
   "module": "dist/loaderz.es5.js",
