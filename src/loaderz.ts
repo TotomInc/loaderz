@@ -74,4 +74,5 @@ class Loader {
   }
 }
 
-export { Loader, Logger };
+export { Logger };
+export default Loader;
