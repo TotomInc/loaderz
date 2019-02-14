@@ -12,7 +12,7 @@ export class MediaLoader {
   /**
    * Array of `MediaData` to load when calling the `start()` function.
    */
-  private medias: MediaData[] = [];
+  public medias: MediaData[] = [];
 
   /**
    * Add URLs to load. Return an array of queued URLs to load.

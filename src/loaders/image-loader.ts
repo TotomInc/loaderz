@@ -10,7 +10,7 @@ export class ImageLoader {
   /**
    * List of URLs to load when calling the `start()` function.
    */
-  private urls: string[] = [];
+  public urls: string[] = [];
 
   /**
    * Add URLs to load. Return an array of queued URLs to load.

@@ -18,6 +18,20 @@ class Loader {
   }
 
   /**
+   * Array of queued images URLs.
+   */
+  get queuedImages() {
+    return this.imageLoader.urls;
+  }
+
+  /**
+   * Array of queued media-data.
+   */
+  get queuedMedias() {
+    return this.mediaLoader.medias;
+  }
+
+  /**
    * Add a new resource to the loading queue, automatically handle what type
    * of resource and how to load it.
    *
