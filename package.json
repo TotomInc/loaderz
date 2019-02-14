@@ -55,9 +55,7 @@
     "typescript": "^3.3.3"
   },
   "files": [
-    "dist/index.js",
-    "dist/index.d.ts",
-    "dist/lib"
+    "dist"
   ],
   "ava": {
     "compileEnhancements": false,
