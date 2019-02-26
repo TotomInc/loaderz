@@ -14,9 +14,8 @@ Install using `yarn` or `npm`:
 ## Usage
 
 ```typescript
-// Default export of Loaderz is the Loader, but there are also named exports of
-// classes used internally (i.e. Logger).
-import Loader, { Logger } from '../src/loaderz';
+// Default export of Loaderz is the Loader.
+import Loader from 'loaderz';
 
 // A list of heavy images to load, it could be art-assets for your HTML5 game
 const images = [
@@ -34,10 +33,6 @@ const audios = [
 // Instanciate the loader, you can easily implement it anywhere in your project
 const loader = new Loader();
 
-// Additionnal step, instanciate the Logger (this is not required for a normal
-// usage)
-const logger = new Logger();
-
 // Queue all our different resources (we can chain since queue returns the
 // instance of loader)
 loader
@@ -47,8 +42,10 @@ loader
 // Start loading the resources and have a full control of the global loading
 // state using a promise and return a response with all elements loaded
 loader.start()
-  .then(response => logger.log('All urls have been loaded, do whatever you want here:', response));
+  .then(response => console.log('All urls have been loaded, do whatever you want here:', response));
 ```
+
+## Docs
 
 - `Loader#queue(type: string, src: string | string[])`: accepts 3 different types of medias (audio, image, video).
 - `Loader#start()`: used to load all the queued resources. Returns a global promise of the resources loading.
