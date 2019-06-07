@@ -1,4 +1,6 @@
-# loaderz
+<p align="center">
+  <img src="https://i.imgur.com/dVPbYeS.png" height="150px" width="auto">
+</p>
 
 [![Build Status](https://travis-ci.org/TotomInc/loaderz.svg?branch=master)](https://travis-ci.org/TotomInc/loaderz) [![license](https://img.shields.io/david/dev/totominc/loaderz.svg)]() [![license](https://img.shields.io/npm/v/loaderz.svg)]() [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
 
